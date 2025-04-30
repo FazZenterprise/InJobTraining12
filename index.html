@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Petualangan di Hutan Ajaib</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="game-container">
+    <h1>Petualangan di Hutan Ajaib</h1>
+    <p id="story"></p>
+    <div class="hp-score">
+      <p>HP: <span id="hp">100</span></p>
+      <p>Skor: <span id="score">0</span></p>
+    </div>
+    <div class="buttons">
+      <button onclick="choosePath('left')">Pergi ke Kiri</button>
+      <button onclick="choosePath('right')">Pergi ke Kanan</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
