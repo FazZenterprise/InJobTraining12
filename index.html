@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Petualangan di Hutan Ajaib</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #2e7d32;
+      color: white;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
+
+    .game-container {
+      max-width: 600px;
+      margin: 50px auto;
+      padding: 20px;
+      background-color: #388e3c;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    }
+
+    button {
+      padding: 10px 20px;
+      margin: 10px;
+      font-size: 16px;
+      cursor: pointer;
+      border: none;
+      border-radius: 5px;
+      background-color: #4caf50;
+      color: white;
+    }
+
+    button:hover {
+      background-color: #66bb6a;
+    }
+  </style>
+</head>
+<body>
+  <div class="game-container">
+    <h1>Petualangan di Hutan Ajaib</h1>
+    <p id="story">Kamu berada di persimpangan hutan ajaib. Arah mana yang ingin kamu tuju?</p>
+    <div class="hp-score">
+      <p>HP: <span id="hp">100</span></p>
+      <p>Skor: <span id="score">0</span></p>
+    </div>
+    <div class="buttons">
+      <button onclick="choosePath('left')">Pergi ke Kiri</button>
+      <button onclick="choosePath('right')">Pergi ke Kanan</button>
+    </div>
+  </div>
+
+  <script>
+    let hp = 100;
+    let score = 0;
+
+    const storyText = document.getElementById("story");
+    const hpDisplay = document.getElementById("hp");
+    const scoreDisplay = document.getElementById("score");
+
+    function updateStats() {
+      hpDisplay.textContent = hp;
+      scoreDisplay.textContent = score;
+    }
+
+    function gameOver() {
+      storyText.innerHTML = "💀 Kamu telah mati!<br>Skor akhirmu: " + score + "<br><button onclick='location.reload()'>Ulangi Game</button>";
+      document.querySelector('.buttons').style.display = 'none';
+    }
+
+    function choosePath(direction) {
+      if (hp <= 0) return;
+
+      const randomEvent = Math.random();
+
+      if (direction === 'left') {
+        if (randomEvent < 0.5) {
+          storyText.textContent = "👹 Monster muncul dan menyerangmu!";
+          hp -= 20;
+          score += 10;
+        } else {
+          storyText.textContent = "💰 Kamu menemukan koin emas!";
+          score += 30;
+        }
+      } else if (direction === 'right') {
+        if (randomEvent < 0.4) {
+          storyText.textContent = "🕳️ Kamu terjatuh dari jurang!";
+          hp -= 30;
+        } else {
+          storyText.textContent = "🌿 Kamu menemukan jamu ajaib yang menyembuhkan!";
+          hp += 10;
+          score += 15;
+        }
+      }
+
+      if (hp <= 0) {
+        gameOver();
+      }
+
+      updateStats();
+    }
+
+    updateStats();
+  </script>
+</body>
+</html>
