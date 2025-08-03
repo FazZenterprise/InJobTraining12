@@ -443,59 +443,169 @@
             transform: scale(1.1);
         }
 
-        /* Profil Section */
-        .team-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 40px;
-        }
+        /* Profil Section Styles */
+#profil {
+    padding: 80px 10%;
+    background-color: #f9f9f9;
+}
 
-        .team-member {
-            text-align: center;
-            width: 150px;
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.4s ease;
-        }
+.team-group {
+    margin-bottom: 60px;
+    position: relative;
+}
 
-        section.visible .team-member {
-            opacity: 1;
-            transform: translateY(0);
-        }
+.team-group:not(:last-child)::after {
+    content: '';
+    display: block;
+    width: 80%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(0, 86, 179, 0.3), transparent);
+    margin: 40px auto;
+}
 
-        section.visible .team-member:nth-child(1) { transition-delay: 0.1s; }
-        section.visible .team-member:nth-child(2) { transition-delay: 0.2s; }
-        section.visible .team-member:nth-child(3) { transition-delay: 0.3s; }
-        section.visible .team-member:nth-child(4) { transition-delay: 0.4s; }
-        section.visible .team-member:nth-child(5) { transition-delay: 0.5s; }
-        section.visible .team-member:nth-child(6) { transition-delay: 0.6s; }
-        section.visible .team-member:nth-child(7) { transition-delay: 0.7s; }
+.group-title {
+    text-align: center;
+    color: #0056b3;
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+    position: relative;
+    padding-bottom: 10px;
+}
 
-        .member-photo {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 5px solid #0056b3;
-            margin-bottom: 15px;
-            transition: all 0.3s;
-        }
+.group-title::after {
+    content: '';
+    position: absolute;
+    width: 60px;
+    height: 3px;
+    background: #0056b3;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
 
-        .team-member:hover .member-photo {
-            transform: scale(1.05);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-        }
+.team-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
 
-        .member-name {
-            font-weight: 600;
-            margin-bottom: 5px;
-        }
+.team-member {
+    text-align: center;
+    width: 200px;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.4s ease;
+    padding: 20px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
 
-        .member-role {
-            color: #666;
-            font-size: 0.9rem;
-        }
+section.visible .team-member {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Animation delays */
+section.visible .team-group:nth-child(1) .team-member:nth-child(1) { transition-delay: 0.1s; }
+section.visible .team-group:nth-child(1) .team-member:nth-child(2) { transition-delay: 0.2s; }
+section.visible .team-group:nth-child(1) .team-member:nth-child(3) { transition-delay: 0.3s; }
+section.visible .team-group:nth-child(2) .team-member:nth-child(1) { transition-delay: 0.4s; }
+section.visible .team-group:nth-child(2) .team-member:nth-child(2) { transition-delay: 0.5s; }
+section.visible .team-group:nth-child(2) .team-member:nth-child(3) { transition-delay: 0.6s; }
+section.visible .team-group:nth-child(3) .team-member:nth-child(1) { transition-delay: 0.7s; }
+section.visible .team-group:nth-child(3) .team-member:nth-child(2) { transition-delay: 0.8s; }
+section.visible .team-group:nth-child(3) .team-member:nth-child(3) { transition-delay: 0.9s; }
+section.visible .team-group:nth-child(4) .team-member:nth-child(1) { transition-delay: 1.0s; }
+
+.member-photo {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid #0056b3;
+    margin-bottom: 15px;
+    transition: all 0.3s;
+}
+
+.team-member:hover .member-photo {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.member-name {
+    font-weight: 600;
+    margin-bottom: 5px;
+    font-size: 1.1rem;
+    color: #333;
+}
+
+.member-role {
+    color: #666;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+/* Mentor Specific Styles */
+.mentor-group {
+    margin-top: 40px;
+}
+
+.mentor-group .group-title::after {
+    background: #e74c3c;
+}
+
+.mentor {
+    border: 2px solid #e74c3c;
+}
+
+.mentor .member-photo {
+    border-color: #e74c3c;
+}
+
+.mentor .member-role {
+    color: #e74c3c;
+    font-weight: 600;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .team-container {
+        gap: 30px;
+    }
+    
+    .team-member {
+        width: 160px;
+        padding: 15px;
+    }
+    
+    .member-photo {
+        width: 120px;
+        height: 120px;
+    }
+}
+
+@media (max-width: 576px) {
+    .team-container {
+        gap: 20px;
+    }
+    
+    .team-member {
+        width: 140px;
+    }
+    
+    .member-photo {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .team-group:not(:last-child)::after {
+        margin: 30px auto;
+    }
+    }
 
         /* Tentang Section */
         .about-content {
@@ -962,65 +1072,87 @@
     </section>
 
     <!-- Profil Section -->
-    <section id="profil">
-        <h2 class="section-title">Peserta & Pembimbing</h2>
+<section id="profil">
+    <h2 class="section-title">Peserta & Pembimbing</h2>
+    
+    <!-- Kelompok RPL 1 -->
+    <div class="team-group">
+        <h3 class="group-title">RPL 1</h3>
         <div class="team-container">
             <div class="team-member">
                 <img src="example.jpg" alt="Peserta 1" class="member-photo">
                 <h4 class="member-name">M.Athar Adlan</h4>
-                <p class="member-role">Peserta - RPL 1</p>
+                <p class="member-role">Peserta</p>
             </div>
             <div class="team-member">
                 <img src="example.jpg" alt="Peserta 2" class="member-photo">
                 <h4 class="member-name">M.Fajri Yansyah</h4>
-                <p class="member-role">Peserta - RPL 1</p>
+                <p class="member-role">Peserta</p>
             </div>
             <div class="team-member">
                 <img src="example.jpg" alt="Peserta 3" class="member-photo">
                 <h4 class="member-name">M.Zibran AL-Habsyi</h4>
-                <p class="member-role">Peserta - RPL 1</p>
+                <p class="member-role">Peserta</p>
             </div>
         </div>
+    </div>
+
+    <!-- Kelompok RPL 2 -->
+    <div class="team-group">
+        <h3 class="group-title">RPL 2</h3>
         <div class="team-container">
             <div class="team-member">
                 <img src="example.jpg" alt="Peserta 4" class="member-photo">
                 <h4 class="member-name">Pola Citrauli Pardosi</h4>
-                <p class="member-role">Peserta - RPL 2</p>
+                <p class="member-role">Peserta</p>
             </div>
             <div class="team-member">
                 <img src="example.jpg" alt="Peserta 5" class="member-photo">
                 <h4 class="member-name">Putri Rahmadiyani</h4>
-                <p class="member-role">Peserta - RPL 2</p>
+                <p class="member-role">Peserta</p>
             </div>
             <div class="team-member">
                 <img src="example.jpg" alt="Peserta 6" class="member-photo">
                 <h4 class="member-name">Rafa Arelian S</h4>
-                <p class="member-role">Peserta - RPL 2</p>
+                <p class="member-role">Peserta</p>
             </div>
         </div>
+    </div>
+
+    <!-- Kelompok RPL 3 -->
+    <div class="team-group">
+        <h3 class="group-title">RPL 3</h3>
         <div class="team-container">
             <div class="team-member">
                 <img src="example.jpg" alt="Peserta 7" class="member-photo">
                 <h4 class="member-name">M.Hafizh Syakir A</h4>
-                <p class="member-role">Peserta - RPL 3</p>
-            </div><div class="team-member">
+                <p class="member-role">Peserta</p>
+            </div>
+            <div class="team-member">
                 <img src="example.jpg" alt="Peserta 8" class="member-photo">
                 <h4 class="member-name">Muhammad Saky</h4>
-                <p class="member-role">Peserta - RPL 3</p>
-            </div><div class="team-member">
+                <p class="member-role">Peserta</p>
+            </div>
+            <div class="team-member">
                 <img src="example.jpg" alt="Peserta 9" class="member-photo">
                 <h4 class="member-name">Nouval Dwi H</h4>
-                <p class="member-role">Peserta - RPL 3</p>
+                <p class="member-role">Peserta</p>
             </div>
         </div>
-            <div class="team-container">
-            <div class="team-member">
+    </div>
+
+    <!-- Pembimbing -->
+    <div class="team-group mentor-group">
+        <h3 class="group-title">Guru Pendamping</h3>
+        <div class="team-container">
+            <div class="team-member mentor">
                 <img src="example.jpg" alt="Guru Pembimbing" class="member-photo">
                 <h4 class="member-name">Walid Jurmawan S.Kom</h4>
-                <p class="member-role">Guru Pendamping</p>
+                <p class="member-role">Pembimbing RPL</p>
             </div>
-            </div>
-    </section>
+        </div>
+    </div>
+</section>
 
     <!-- Tentang Section -->
     <section id="tentang">
